@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["HBYP7C9D4H.com.grossomodo.app"],
+        "components": [
+          { "/": "/play", "comment": "Défi du jour" },
+          { "/": "/play/", "comment": "Défi du jour" },
+          { "/": "/d", "?": { "d": "?*", "s": "?*", "p": "?*" }, "comment": "Duel : jour, score, pastilles" },
+          { "/": "/d/", "?": { "d": "?*", "s": "?*", "p": "?*" }, "comment": "Duel" },
+          { "/": "/archive", "?": { "d": "?*" }, "comment": "Jour d'archive" }
+        ]
+      }
+    ]
+  }
+}

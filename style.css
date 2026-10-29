@@ -1,0 +1,169 @@
+/* Grosso Modo : feuille de style unique du site (sans dépendance).
+   Identité « Encre & Violet électrique » (DECISIONS n° 7) : papier #F6F3EC / encre #0C1020,
+   violet électrique, SF Rounded. Couleurs reprises de Estime/DesignSystem/DesignSystem.swift. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #F6F3EC;
+  --bg-2: #EEEAE0;
+  --surface: #FFFFFF;
+  --border: #E3DED2;
+  --ink: #11152B;
+  --ink-2: #5B5F73;
+  --accent: #5B4BD6;
+  --accent-text: #4A3BC4;
+  --accent-soft: #E6E2FB;
+  --on-accent: #FFFFFF;
+  --logo-bracket: #5B4BD6;
+  --logo-dot: #8B7CF6;
+  --warning-soft: #FBF0D0;
+  --warning-text: #7A5300;
+  --radius: 20px;
+  --font: ui-rounded, "SF Pro Rounded", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui,
+          "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0C1020;
+    --bg-2: #111630;
+    --surface: #161B33;
+    --border: #2A3050;
+    --ink: #F2F1EA;
+    --ink-2: #A3A7BC;
+    --accent: #8B7CF6;
+    --accent-text: #A79BFF;
+    --accent-soft: #2A2659;
+    --on-accent: #0C1020;
+    --logo-bracket: #8B7CF6;
+    --warning-soft: #3D3012;
+    --warning-text: #FFD469;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a { color: var(--accent-text); text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem; z-index: 10;
+  background: var(--accent); color: var(--on-accent); padding: 0.5rem 1rem; border-radius: 999px;
+  font-weight: 700; text-decoration: none;
+}
+.skip:focus { top: 1rem; }
+
+.wrap { width: 100%; max-width: 46rem; margin: 0 auto; padding: 0 1rem; }
+
+/* En-tête */
+.site-header { padding: 1.25rem 0; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.site-header nav { display: flex; gap: 1.25rem; font-weight: 600; }
+.site-header nav a { color: var(--ink-2); text-decoration: none; }
+.site-header nav a:hover, .site-header nav a[aria-current="page"] { color: var(--ink); }
+
+/* Logotype « grosso [•] modo » : minuscules SF Rounded Black, glyphe [•] dessiné en SVG
+   (proportions de BracketGlyph, DECISIONS n° 34), centre du point aligné sur le milieu de la hauteur d'x. */
+.logo {
+  display: inline-block;
+  font-weight: 900; letter-spacing: 0; color: var(--ink); text-decoration: none;
+  font-size: 1.5rem; line-height: 1; white-space: nowrap;
+}
+.logo svg { display: inline-block; height: 0.9em; width: 0.906em; vertical-align: -0.19em; overflow: visible; }
+.logo .bracket { fill: var(--logo-bracket); }
+.logo .dot { fill: var(--logo-dot); }
+.logo-xl { font-size: clamp(2.5rem, 11vw, 4rem); }
+
+main { padding-bottom: 3rem; }
+
+/* Accueil */
+.hero { display: grid; gap: 2rem; align-items: center; padding: 1.5rem 0 2.5rem; }
+.hero h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); line-height: 1.15; margin: 1rem 0 0.75rem; font-weight: 800; }
+.hero .lead { color: var(--ink-2); font-size: 1.15rem; margin: 0 0 1.5rem; }
+.hero figure { margin: 0; justify-self: center; }
+.hero img { display: block; width: 100%; max-width: 300px; height: auto; border-radius: 28px;
+            box-shadow: 0 24px 48px -16px rgba(12, 16, 32, 0.45); }
+
+@media (min-width: 46rem) {
+  .hero { grid-template-columns: 1.15fr 1fr; padding-top: 2.5rem; }
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem; min-height: 48px;
+  padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 800; font-size: 1.05rem;
+  background: var(--accent); color: var(--on-accent); text-decoration: none; border: 0;
+}
+.btn:hover { filter: brightness(1.08); text-decoration: none; }
+.btn-soon { background: var(--accent-soft); color: var(--accent-text); cursor: default; }
+.btn-soon:hover { filter: none; }
+.btn svg { width: 1.2em; height: 1.2em; fill: currentColor; flex: none; }
+
+.points { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+@media (min-width: 46rem) { .points { grid-template-columns: repeat(3, 1fr); } }
+.points li { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.points h2 { font-size: 1.15rem; line-height: 1.3; margin: 0 0 0.4rem; font-weight: 800; }
+.points p { margin: 0; color: var(--ink-2); font-size: 1rem; }
+.points .mark { display: inline-grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 12px;
+                background: var(--accent-soft); color: var(--accent-text); font-weight: 900; margin-bottom: 0.75rem; }
+
+/* Pages de texte */
+.page h1 { font-size: clamp(1.9rem, 7vw, 2.6rem); line-height: 1.15; margin: 1.5rem 0 0.5rem; font-weight: 800; }
+.page .meta { color: var(--ink-2); margin: 0 0 2rem; }
+.page h2 { font-size: 1.3rem; line-height: 1.3; margin: 2.25rem 0 0.5rem; font-weight: 800; }
+.page h3 { font-size: 1.1rem; margin: 1.5rem 0 0.25rem; font-weight: 700; }
+.page p, .page li { max-width: 40rem; }
+.page ul { padding-left: 1.25rem; }
+.page li + li { margin-top: 0.35rem; }
+
+.summary { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+.summary h2 { margin-top: 0; }
+.summary ul { margin: 0; }
+
+.conditional { background: var(--warning-soft); border-radius: var(--radius); padding: 0.25rem 1.5rem 1.25rem; margin-top: 2.25rem; }
+.conditional h2 { margin-top: 1.25rem; }
+.conditional .tag { display: inline-block; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase;
+                    color: var(--warning-text); margin: 1rem 0 0; }
+
+/* FAQ */
+.faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 0 1.25rem; }
+.faq details + details { margin-top: 0.75rem; }
+.faq summary { cursor: pointer; font-weight: 700; padding: 1rem 0; list-style-position: outside; }
+.faq summary::marker { color: var(--accent); }
+.faq details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 0.75rem; }
+.faq details p { margin: 0 0 1rem; }
+.contact { margin-top: 2.5rem; background: var(--accent-soft); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+.contact h2 { margin-top: 0.25rem; }
+
+/* Pied */
+.site-footer { border-top: 1px solid var(--border); padding: 1.5rem 0 2.5rem; color: var(--ink-2); font-size: 0.95rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; align-items: center; justify-content: space-between; }
+.site-footer nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.site-footer a { color: var(--ink-2); }
+.site-footer a:hover { color: var(--ink); }
+.site-footer p { margin: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: filter 0.15s ease; }
+}
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.hero .logo-xl { margin: 0; }
+@media (max-width: 45.99rem) {
+  .hero { padding-top: 0.5rem; gap: 1.5rem; }
+}
